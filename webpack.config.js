@@ -44,7 +44,7 @@ module.exports = env =>{
         plugins:[
             new htmlWebpackPlugin({
                 template : resolve('./src/assets/index.html'),
-                title : "Tetris",
+                title : "简书",
                 minify : {
                     removeComments: true,
                     collapseWhitespace: true,
