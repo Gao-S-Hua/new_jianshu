@@ -14,11 +14,13 @@ module.exports = env =>{
         output : {
             path : resolve('./dist'),
             filename : 'js/[name]-[hash:8].js',
-            chunkFilename : 'js/[name].chunk.[chunkhash:4].js'
+            chunkFilename : 'js/[name].chunk.[chunkhash:4].js',
+            // publicPath : 'www.host.com',
+            publicPath : '/'
         },
         resolve: {
             extensions: ['*', '.js', '.jsx'],
-            alias : { images : resolve('./src/assets') }
+            alias : { Images : resolve('./src/assets'), Styles : resolve('./src/styles') }
         },
         module:{
             rules : [
@@ -26,8 +28,7 @@ module.exports = env =>{
                 {
                     test : /\.(css|less)/, 
                     include: [
-                        resolve('../src/style'),
-                        resolve('../src/component')
+                        resolve('./src/style')
                     ],
                     use:[
                         {loader: MiniCssExtractPlugin.loader},
@@ -67,6 +68,7 @@ module.exports = env =>{
         devServer: {
             port: 3000,
             open: true,
+            historyApiFallback: true,
             proxy: {
               '/api/**': {
                 target: 'http://localhost:8000',
