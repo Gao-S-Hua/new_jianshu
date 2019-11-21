@@ -9,9 +9,14 @@ import Regist from './components/regist';
 import store from './store'
 const App = () => {
     // const [ID, setID] = useState("null")
-    // useEffect(() => {
-    //     axios.get('/api/getID').then(res =>  {setID(res.data.ID); console.log(res)});
-    // },[1])
+    // GET 
+    useEffect(() => {
+        axios.get('/api/getID').then(res =>   console.log(res));
+    },[1])
+    // POST
+    useEffect(() => {
+        axios.post('/api/user', {name : 'Huahua', id : '372248'}).then(res =>   console.log(res));
+    },[1])
     
 return (
     <>
