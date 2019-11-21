@@ -36,6 +36,13 @@ module.exports = env =>{
                         'less-loader']
                 },
                 {
+                    test : /\.(css)/, 
+                    include: [
+                        resolve('./node_modules/antd')
+                    ],
+                    use:[{loader: MiniCssExtractPlugin.loader},'css-loader']
+                },
+                {
                     test: /\.(png|jpe?g|gif|ico)$/i, 
                     loader: 'file-loader',
                     options: {name: '[name].[hash:8].[ext]', outputPath: 'media'} 
@@ -45,7 +52,7 @@ module.exports = env =>{
         plugins:[
             new htmlWebpackPlugin({
                 template : resolve('./src/assets/index.html'),
-                title : "简书",
+                title : "简书 - 创作你的创作",
                 minify : {
                     removeComments: true,
                     collapseWhitespace: true,
