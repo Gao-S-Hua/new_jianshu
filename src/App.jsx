@@ -10,13 +10,14 @@ import store from './store'
 const App = () => {
     // const [ID, setID] = useState("null")
     // GET 
-    useEffect(() => {
-        axios.get('/api/getID').then(res =>   console.log(res));
-    },[1])
+    // const [img1, setImg1] = useState(null);
+    // useEffect(() => {
+    //     axios.get('/media/1.jpg').then(res =>   {setImg1 (res.data)})
+    // },[1])
     // POST
-    useEffect(() => {
-        axios.post('/api/user', {name : 'Huahua', id : '372248'}).then(res =>   console.log(res));
-    },[1])
+    // useEffect(() => {
+    //     axios.post('/api/user', {name : 'Huahua', id : '372248'}).then(res =>   console.log(res));
+    // },[1])
     
 return (
     <>

@@ -7,6 +7,11 @@ function resolve(relatedPath) {
   };
 
 module.exports = env =>{
+    const proxyConfig = {
+        target: 'http://localhost:8000',
+        secure: false,
+        changeOrigin: true,
+      }
     return{
 
         entry : resolve('./src/index.js'),
@@ -77,11 +82,9 @@ module.exports = env =>{
             open: true,
             historyApiFallback: true,
             proxy: {
-              '/api/**': {
-                target: 'http://localhost:8000',
-                secure: false,
-                changeOrigin: true,
-              }
+              '/api/*': proxyConfig,
+              '/media/*' : proxyConfig,
+              '/data/*' : proxyConfig
             }
           }
     }

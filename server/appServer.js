@@ -14,12 +14,12 @@ const getData = (fileName) =>{
         return null;
 }
 
-// app.use(express.static('dist'));
+// app.use(express.static(__dirname +'./media'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // APIs :
 // Handle GET:
-app.get('/api/*', 
+app.get('/data/*', 
     (req, res) => { 
         const requestFile = req.params[0];
         console.log('########### Handle Client GET #################');
@@ -28,7 +28,11 @@ app.get('/api/*',
         res.send(getData(requestFile)) 
     }
 );
-
+app.get('/media/*', 
+    (req, res) => { 
+        res.sendFile(__dirname + '/media/'+req.params[0]);
+    }
+);
 // Handle POST:
 app.post('/api/user',function(req,res){
     console.log('########### Handle Client POST #################');
