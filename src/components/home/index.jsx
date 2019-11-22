@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from 'Styles/home.less';
 import Header from '../common/Header';
 import Recommend from './Recommend';
+import Sidebar from './Sidebar';
 import Axios from 'axios';
 const Home = () => {
     const [articles, setArticles] = useState([]);
@@ -16,10 +17,10 @@ const Home = () => {
         <>
             <Header />
             <div className = {styles.homeBody}>
-                This is Home Body
                 <div className = {styles.recommendwrapper}>
                     {mainBody()}
                 </div>
+                <Sidebar />
             </div>
         </>
     );
