@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import Home from './components/home';
 import Details from './components/details';
 import SignIn from './components/signIn';
-import Regist from './components/regist';
+import Signup from './components/signIn/Signup';
 import store from './store'
 const App = () => {
     // const [ID, setID] = useState("null")
@@ -25,8 +25,8 @@ return (
             <BrowserRouter>
                 <Route path = '/' exact component = {Home} />
                 <Route path = "/p/:id"  component = {Details} />
-                <Route path = "/sign_in"  component = {SignIn} />
-                <Route path = "/regist"  component = {Regist} />
+                <Route path = "/signin"  component = {SignIn} />
+                <Route path = "/signup"  component = {Signup} />
             </BrowserRouter>
         </Provider>
     </>

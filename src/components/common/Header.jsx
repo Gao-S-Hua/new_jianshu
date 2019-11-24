@@ -17,8 +17,8 @@ const Header = () => {
         </div>
         
         <div className = {styles.write}> <Icon type="form" />写文章</div>
-        <Link to = '/regist'><div className = {styles.register}> 注册</div></Link> 
-        <Link to = '/sign_in'><div className = {styles.login}>登陆</div></Link>
+        <Link to = '/signup'><div className = {styles.register}> 注册</div></Link> 
+        <Link to = '/signin'><div className = {styles.login}>登陆</div></Link>
     </div>
     )
 };
