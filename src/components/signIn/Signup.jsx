@@ -34,7 +34,7 @@ const Signup = () => {
                     placeholder="设置密码"
                 />
             </div>
-            <Button type = 'primary' className = {styles.submit} size = 'large' style={{background:"#42c02E", borderRadius: "25px", border: 'none'}}>注册</Button>
+            <Button type = 'primary' className = {styles.submit2} size = 'large' >注册</Button>
             <div className = {styles.others}>
                 社交帐号直接注册
                 <img src = {logPic} alt = 'log logo' style={{width : "100px", margin : "5px"}}/>

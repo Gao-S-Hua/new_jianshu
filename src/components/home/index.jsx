@@ -4,7 +4,7 @@ import Header from '../common/Header';
 import Recommend from './Recommend';
 import Sidebar from './Sidebar';
 import Axios from 'axios';
-const Home = () => {
+const Home = (props) => {
     const [articles, setArticles] = useState([]);
     useEffect(()=>{
         Axios.get('./data/recommend').then(res => {setArticles(res.data);});
@@ -26,4 +26,4 @@ const Home = () => {
     );
 }
 
-export default Home
+export default Home;
