@@ -9,7 +9,6 @@ var session = require('express-session')
 const getData = (fileName) =>{
     const contents = JSON.parse(    fs.readFileSync(path.join(__dirname,`./data/${fileName}.json`), 'utf8')   );
     if(contents){
-        console.log(contents)
         return contents.data;
     }
     else
@@ -62,7 +61,6 @@ app.post('/api/user',function(req,res){
     console.log(`Server Received : ${JSON.stringify(req.body)} ||  path :${req.path}`)
     console.log(' ');
     if(req.body.userid === "admin" && req.body.pswd === "admin"){
-        console.log("Set user info");
         if(req.body.remeberme)
             req.session.userinfo="4520";
         res.send({log : true, nickName : "蝙蝠侠", error : false, id : "4520"});
