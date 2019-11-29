@@ -1,15 +1,26 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
+import axios from 'axios';
 import {Link } from 'react-router-dom';
 import logo from 'Images/logo.png';
 import styles from 'Styles/header.less';
 import {Icon} from 'antd';
 import * as ACTION from '../signIn/store/constants';
 const Header = (props) => {
-    const {login,nickName} = props;
+    const {login,nickName,userID} = props;
+    console.log(login);
     const dispatch = useDispatch();
+    useEffect(()=> {
+        axios.get('/api/user').then(res => {
+            if(res.data.log){
+                const action = {type : ACTION.LOG_IN, id : res.data.id, nickName : res.data.nickName};
+                dispatch(action);
+            }
+        });
+    }, [1])
     const handleLogOut = () => {
-        const action = {type : ACTION.LOG_OUT}
+        const action = {type : ACTION.LOG_OUT};
+        axios.post('/api/logout',{userID: userID})
         dispatch(action);
     }
     const BeforeLog = () => (
@@ -21,6 +32,7 @@ const Header = (props) => {
     );
     const AfterLog = () => (
         <div className = {styles.rightbar}>
+            <img src = {"/media/user"+userID+'.png'} alt = 'profile' className ={styles.profile}/>
             <div className = {styles.username}> {nickName} </div>
             <div className = {styles.login} onClick = {handleLogOut}> 退出登录</div>
             <div className = {styles.write}> <Icon type="form" />写文章</div>
@@ -43,6 +55,7 @@ const Header = (props) => {
 };
 const mapState = (state) => ({
     login : state.user.get('login'),
-    nickName : state.user.get('nickName')
+    nickName : state.user.get('nickName'),
+    userID : state.user.get('userID')
 })
 export default connect(mapState)(Header);

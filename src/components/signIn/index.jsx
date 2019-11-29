@@ -19,17 +19,15 @@ const SignIn = (props) => {
     const handleSubmit = () => {
         const postData = {
             userid : userid,
-            pswd : pswd
+            pswd : pswd,
+            remeberme : mem
         }
-        console.log(postData);
         axios.post("/api/user",postData)
         .then(res => {
             if(!res.data.log)
                 setError(true)
             else{
                 const action = {type : Action.LOG_IN, id : res.data.id, nickName : res.data.nickName};
-                console.log("passed");
-                console.log(res.data);
                 dispatch(action);
             }
         })

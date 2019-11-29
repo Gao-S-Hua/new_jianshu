@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 app.get('/data/*', 
     (req, res) => { 
         const requestFile = req.params[0];
-        console.log('########### Handle Client GET #################');
         console.log(`Client request File : ${requestFile}.json`);
         console.log(' ');
         res.send(getData(requestFile)) 
@@ -35,36 +34,42 @@ app.get('/media/*',
         res.sendFile(__dirname + '/media/'+req.params[0]);
     }
 );
-// Handle POST:
-app.post('/api/user',function(req,res){
-    console.log('########### Handle Client POST #################');
-    console.log(`Server Received : ${JSON.stringify(req.body)} ||  path :${req.path}`)
-    console.log(' ');
-    if(req.body.userid === "huahua" && req.body.pswd === "3722")
-        res.send({log : true, nickName : "绍华", error : false, id : "4520"});
-    else
-        res.send({log : false, nickName : "", error : true, id:"4520"})
-  });
-
-
-  // Handle session
+// Handle User log in / out:
+// Handle session
   app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: 10*1000
+        maxAge: 10*60*1000
     }
-  }))
-  app.use(function (req, res, next) {
-    if (!req.session.views) {
-      req.session.views = 0
+  }));
+
+
+app.get('/api/user', function(req,res){
+    if(req.session.userinfo)
+        res.send({log : true, nickName : "蝙蝠侠", error : false, id : "4520"});
+    else
+        res.send({log : false, nickName : "", error : false, id : ""});
+});
+
+app.post('/api/logout', function(req,res){
+    req.session.destroy();
+    console.log("User Log Out")
+})
+
+app.post('/api/user',function(req,res){
+    console.log(`Server Received : ${JSON.stringify(req.body)} ||  path :${req.path}`)
+    console.log(' ');
+    if(req.body.userid === "admin" && req.body.pswd === "admin"){
+        console.log("Set user info");
+        if(req.body.remeberme)
+            req.session.userinfo="4520";
+        res.send({log : true, nickName : "蝙蝠侠", error : false, id : "4520"});
     }
-    // count the views
-    req.session.views = ((req.session.views || 0) + 1);
-    next();
-  })
-  app.get('/foo', function (req, res, next) {
-    res.send('you viewed this page ' + req.session.views + ' times')
-  })
+    else
+        res.send({log : false, nickName : "", error : true, id:""})
+  });
+
+
 app.listen(8000, () => console.log("Listening on port 8000!"))
