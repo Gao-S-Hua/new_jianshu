@@ -10,7 +10,7 @@ const Home = (props) => {
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
         axios.get('./data/recommend').then(res => {setArticles(res.data); setLoading(false)});
-    },[1])
+    },[1]);
     const mainBody = () => {
         return articles.map( (item) =>(<Recommend article = {item.article} key = {item.id} id = {item.id}/>) )
     }

@@ -1,22 +1,28 @@
 import React, {useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import axios from 'axios';
-import {Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import logo from 'Images/logo.png';
 import styles from 'Styles/header.less';
 import {Icon} from 'antd';
 import * as ACTION from '../signIn/store/constants';
 const Header = (props) => {
     const {login,nickName,userID} = props;
-    console.log(login);
+    // const history = useHistory();
     const dispatch = useDispatch();
     useEffect(()=> {
-        axios.get('/api/user').then(res => {
-            if(res.data.log){
-                const action = {type : ACTION.LOG_IN, id : res.data.id, nickName : res.data.nickName};
-                dispatch(action);
-            }
-        });
+        if(!login){
+            console.log("request User ID")
+            axios.get('/api/user').then(res => {
+                if(res.data.log){
+                    const action = {type : ACTION.LOG_IN, id : res.data.id, nickName : res.data.nickName};
+                    dispatch(action);
+                }
+            });
+        }
+        else{
+            console.log("continue");
+        }
     }, [1])
     const handleLogOut = () => {
         const action = {type : ACTION.LOG_OUT};
@@ -25,8 +31,8 @@ const Header = (props) => {
     }
     const BeforeLog = () => (
         <div className = {styles.rightbar}>
-            <Link to = '/signin'><div className = {styles.login}>登陆</div></Link>
-            <Link to = '/signup'><div className = {styles.register}> 注册</div></Link> 
+            <Link to ="/signin"><div className = {styles.login}>登陆</div></Link>
+            <Link to = "/signup"><div className = {styles.register} onClick = {() => {history.push("/signup")}}> 注册</div></Link>
             <div className = {styles.write}> <Icon type="form" />写文章</div>
         </div>
     );
@@ -42,7 +48,7 @@ const Header = (props) => {
     <div className = {styles.headerBody}> 
         <img src = {logo} alt = 'logo' className = {styles.logo}/>
         <div className = {styles.navbar}>
-            <a className = {styles.navitem1} href = '/'><Icon type="compass" /> 首页</a>
+            <Link to='/'><div className = {styles.navitem1}><Icon type="compass" /> 首页</div></Link>
             <div className = {styles.navitem2}><Icon type="apple" /> 下载App</div>
             <div className = {styles.navsearch}>
                 <input placeholder = "搜索" className = {styles.search}></input>

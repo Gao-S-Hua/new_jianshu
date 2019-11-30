@@ -5,7 +5,6 @@ import styles from 'Styles/home.less'
 
 const Recommend = (props) => {
     const {article} = props;
-    console.log(article);
     return(
         <div className = {styles.recommenditem}>
             <div className = {styles.articlebody}>
