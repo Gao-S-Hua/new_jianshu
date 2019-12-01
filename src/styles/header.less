@@ -51,24 +51,38 @@
     margin : 8px 0px;
     border-radius: 19px;
     height : 38px;
-    width : 210px;
     background-color : #EEEEEE;
-    display: flex;
+    display: inline-flex;
 }
+
+
+
+
 .search{
     background-color: transparent;
     border: transparent;
     margin : 0 8px;
+    width : 120px;
     outline: none;
+    transition: width 0.5s;
+}
+
+.search:focus{
+    width : 170px;
+}
+.search:focus + .searchicon{
+    background : rgb(155, 153, 153);
+    color : #EEEEEE;
 }
 .searchicon{
     float : right;
-    padding : 4px;
+    padding : 3px 0 0 6px;
     color : rgb(143, 141, 141);
     font-size: 17px;
-    height : 36px;
-    width : 36px;
+    height : 30px;
+    width : 30px;
     border-radius: 18px;
+    margin : 4px 6px 0 0;
     cursor: pointer;
 }
 

@@ -58,11 +58,83 @@
 
 .sidebarwrapper{
     width : 280px;
-    height : 100px;
     float : right;
 }
 
 .sidebarimgwrapper{
     width : 100%;
     height : 60px;
+}
+
+.downloadwrapper{
+    width : 280px;
+    height : 80px;
+    border-radius: 6px;
+    padding : 10px 22px;
+    border : 1px solid #f0f0f0;
+    cursor : pointer;
+}
+.barcode{
+    width : 60px;
+    height : 60px;
+    float : left;
+    display: block;
+}
+.download{
+    color : #333333;
+    margin : 5px 0 5px 70px;
+    font-size : 15px;
+    display: block;
+}
+.downloaddetail{
+    color : #999999;
+    margin : 5px 0 5px 70px;
+    font-size : 13px;
+    display: block;
+}
+.bigwrapper{
+    height : 0px;
+    width : 0px;
+    z-index: 10;
+    visibility: visible;
+}
+.hide{
+    visibility: hidden;
+}
+.bigbarcode{
+    width : 160px;
+    height : 160px;
+}
+.showbarcode{
+    width : 180px;
+    height : 180px;
+    padding : 10px;
+    border-radius : 8px;
+    border : 1px solid #090909;
+    background : white;
+    position: relative;
+    top : -190px;
+    left : 50px;
+    z-index: 10;
+}
+.showbarcode:after, .showbarcode:before {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.showbarcode:after {
+	border-top-color: #ffffff;
+	border-width: 9px;
+	margin-left: -9px;
+}
+.showbarcode:before {
+	border-top-color: #090909;
+	border-width: 10px;
+	margin-left: -10px;
 }

@@ -17,7 +17,8 @@ const Header = (props) => {
                 if(res.data.log){
                     const action = {type : ACTION.LOG_IN, id : res.data.id, nickName : res.data.nickName};
                     dispatch(action);
-                }
+                }else
+                    console.log("server declined")
             });
         }
         else{
