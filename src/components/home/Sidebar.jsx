@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import styles from 'Styles/home.less';
+import styles from 'Styles/sidebar.less';
 import sidebar1 from 'Images/sidebar1.png';
 import sidebar2 from 'Images/sidebar2.png';
 import sidebar3 from 'Images/sidebar3.png';
@@ -29,6 +29,7 @@ const Sidebar = () => {
                 <div className = {styles.downloaddetail}>随时随地发现和创造内容</div>
             </div>
             <Writers />
+            <button className = {styles.checkmore}>查看全部 ></button>
         </div>
     );
 };

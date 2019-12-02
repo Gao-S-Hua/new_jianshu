@@ -1,10 +1,10 @@
 {
     "status" : "successful",
     "data" : [
-        {"name" : "刘慈欣讲三体", "words" : "413k", "likes": "13.2k", "img" : "/media/writer1.jpg"},
-        {"name" : "Hobbit霍比特人", "words" : "211k", "likes": "1.43k", "img" : "/media/writer2.jpg"},
+        {"name" : "刘慈欣讲三体", "words" : "413.4k", "likes": "13.2k", "img" : "/media/writer1.jpg"},
+        {"name" : "Hobbit霍比特人", "words" : "211.6k", "likes": "1.43k", "img" : "/media/writer2.jpg"},
         {"name" : "格列柯南", "words" : "12.7k", "likes": "683", "img" : "/media/writer3.jpg"},
-        {"name" : "无限猴子", "words" : "295k", "likes": "8.29k", "img" : "/media/writer4.jpg"},
+        {"name" : "无限猴子", "words" : "295.0k", "likes": "8.29k", "img" : "/media/writer4.jpg"},
         {"name" : "邓哲", "words" : "78.3k", "likes": "23.1k", "img" : "/media/writer5.jpg"}
     ]
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Icon} from 'antd';
-import styles from '../../styles/home.less';
+import styles from 'Styles/sidebar.less';
 
 const Wtr = (props) => {
     

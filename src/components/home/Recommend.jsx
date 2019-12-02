@@ -17,9 +17,9 @@ const Recommend = (props) => {
                     <div className = {styles.cnt}><Icon type="heart" theme="filled"/>{article.likeCnt}</div>
                 </div>
             </div>
-            <div className = {styles.imgbody}>
-                <img src = {article.imgURL} width = "150px"/>
-            </div>
+            {/* <div className = {styles.imgbody}> */}
+                <img src = {article.imgURL} width = "150px" className = {styles.imgbody}/>
+            {/* </div> */}
         </div>
     )
 };

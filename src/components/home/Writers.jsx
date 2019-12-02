@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import styles from '../../styles/home.less';
+import styles from 'Styles/sidebar.less';
 import axios from 'axios';
 import {Icon} from 'antd';
 import Wtr from './Wtr';
@@ -11,7 +11,7 @@ const Writers = () => {
     },[1]);
     const handleClick = () => {
         setSpin(true);
-        setTimeout(()=>{setSpin(false)},1500);
+        setTimeout(()=>{setSpin(false)},1000);
     };
     return(
         <div className = {styles.writers}>
@@ -23,7 +23,7 @@ const Writers = () => {
                     换一批
                 </div>
             </div>
-             {writers.map(item => (<Wtr name = {item.name} words = {item.words} img = {item.img} key = {item.name} />))}
+             {writers.map(item => (<Wtr name = {item.name} words = {item.words} likes = {item.likes} img = {item.img} key = {item.name} />))}
         </div>
     )
 }
