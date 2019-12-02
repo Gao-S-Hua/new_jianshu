@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react';
 import styles from 'Styles/home.less';
 import Header from '../common/Header';
 import Recommend from './Recommend';
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar';
 import axios from 'axios';
+import Loadable from 'react-loadable';
 import Loading from '../common/Loading';
-const Home = (props) => {
+const Home = () => {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(()=>{
@@ -14,6 +15,10 @@ const Home = (props) => {
     const mainBody = () => {
         return articles.map( (item) =>(<Recommend article = {item.article} key = {item.id} id = {item.id}/>) )
     }
+    const Sidebar = Loadable({
+        loader : () => (import('./Sidebar')),
+        loading : () => (<div>"Loading"</div>)
+    });
          
     return(
         <>

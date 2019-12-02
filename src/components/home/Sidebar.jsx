@@ -5,6 +5,7 @@ import sidebar2 from 'Images/sidebar2.png';
 import sidebar3 from 'Images/sidebar3.png';
 import sidebar4 from 'Images/sidebar4.png';
 import barCode from 'Images/2d-bar-code.png';
+import Writers from './Writers';
 const Sidebar = () => {
     const [hover, setHover] = useState(false)
     return(
@@ -27,6 +28,7 @@ const Sidebar = () => {
                 <div className = {styles.download}>下载简书手机APP ></div>
                 <div className = {styles.downloaddetail}>随时随地发现和创造内容</div>
             </div>
+            <Writers />
         </div>
     );
 };
