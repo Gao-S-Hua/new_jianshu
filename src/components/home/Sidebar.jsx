@@ -6,7 +6,7 @@ import sidebar3 from 'Images/sidebar3.png';
 import sidebar4 from 'Images/sidebar4.png';
 import barCode from 'Images/2d-bar-code.png';
 import Writers from './Writers';
-const Sidebar = () => {
+const Sidebar = (props) => {
     const [hover, setHover] = useState(false)
     return(
         <div className = {styles.sidebarwrapper}>
@@ -25,11 +25,11 @@ const Sidebar = () => {
                 onMouseOut = {()=> {setHover(false)}}
                 >
                 <img src = {barCode} alt = "2D bar code" className = {styles.barcode}/>
-                <div className = {styles.download}>下载简书手机APP ></div>
+                <div className = {styles.download}>下载简书手机APP {">"}</div>
                 <div className = {styles.downloaddetail}>随时随地发现和创造内容</div>
             </div>
-            <Writers />
-            <button className = {styles.checkmore}>查看全部 ></button>
+            <Writers writers = {props.writers}/>
+            <button className = {styles.checkmore}>查看全部 {">"}</button>
         </div>
     );
 };

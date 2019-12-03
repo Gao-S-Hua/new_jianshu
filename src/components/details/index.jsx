@@ -9,7 +9,6 @@ const Details = (props) => {
         .then( res => {setContent(res.data.content)})
         .catch(() => {setContent("<h1>文章删除或者服务器请求错误，请重试</h1>")})
     },[1])
-    const msg = "<h1>Title</h1>"
     return(
         <>
             <Header />

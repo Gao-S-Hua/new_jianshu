@@ -1,14 +1,11 @@
-import React,{useEffect,useState} from 'react';
+import React,{useState} from 'react';
 import styles from 'Styles/sidebar.less';
-import axios from 'axios';
 import {Icon} from 'antd';
 import Wtr from './Wtr';
-const Writers = () => {
-    const [writers, setWriters] = useState([]);
+const Writers = (props) => {
+    
     const [spin, setSpin] = useState(false);
-    useEffect(()=>{
-        axios.get('/data/writers').then((res) => {setWriters(res.data)})
-    },[1]);
+    const {writers} = props;
     const handleClick = () => {
         setSpin(true);
         setTimeout(()=>{setSpin(false)},1000);
