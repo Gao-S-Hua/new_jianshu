@@ -7,9 +7,8 @@ import styles from 'Styles/header.less';
 import {Icon} from 'antd';
 import * as ACTION from '../signIn/store/constants';
 const Header = (props) => {
-    const {login,nickName,userID} = props;
-    // const history = useHistory();
     const dispatch = useDispatch();
+    const {login,nickName,userID} = props;
     useEffect(()=> {
         if(!login){
             console.log("request User ID")
