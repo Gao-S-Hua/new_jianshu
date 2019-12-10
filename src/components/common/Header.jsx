@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
@@ -9,6 +9,9 @@ import * as ACTION from '../signIn/store/constants';
 const Header = (props) => {
     const dispatch = useDispatch();
     const {login,nickName,userID} = props;
+    const [search, setSearch] = useState("");
+    const [timerID,setTimerID] = useState(null);
+    const [searchResult, setSearchResult] = useState("");
     useEffect(()=> {
         if(!login){
             console.log("request User ID")
@@ -24,6 +27,16 @@ const Header = (props) => {
             console.log("continue");
         }
     }, [1])
+    useEffect(() => {
+        if(timerID){
+            clearTimeout(timerID);
+        }
+        if(search.length > 0)
+            setTimerID( setTimeout(() => {console.log('reqest:' + search),setSearchResult("搜索"+search+"的结果")} , 1000) );
+    }, [search])
+    function handleChange(e){
+        setSearch(e.target.value);
+    }
     const handleLogOut = () => {
         const action = {type : ACTION.LOG_OUT};
         axios.post('/api/logout',{userID: userID})
@@ -50,9 +63,12 @@ const Header = (props) => {
         <div className = {styles.navbar}>
             <Link to='/'><div className = {styles.navitem1}><Icon type="compass" /> 首页</div></Link>
             <div className = {styles.navitem2}><Icon type="apple" /> 下载App</div>
-            <div className = {styles.navsearch}>
-                <input placeholder = "搜索" className = {styles.search}></input>
-                <div className = {styles.searchicon}><Icon type="search" /></div>
+            <div className = {styles.searchWrapper}>
+                <div className = {styles.navsearch}>
+                    <input placeholder = "搜索" className = {styles.search} onChange = {handleChange} value = {search}></input>
+                    <div className = {styles.searchicon}><Icon type="search" /></div>
+                </div>
+    {search.length === 0 ? null : <div className = {styles.searchResult}>{searchResult}</div>}
             </div>
         </div>
             {login? <AfterLog /> : <BeforeLog />}

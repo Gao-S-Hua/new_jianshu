@@ -8,7 +8,7 @@ Build with React, redux, antd, react-router-dom and webpack
 All resources in ./src
 ```
 
-### Server(Fake) : Express
+### Server : Express
 
 ```
 For test only
